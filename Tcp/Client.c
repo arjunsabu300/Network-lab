@@ -9,7 +9,7 @@
 
 void main()
 {
-   int port=8000;
+   int port=8086;
    struct sockaddr_in serv_addr;
    struct hostent *server;
    char buffer[255];
@@ -33,13 +33,16 @@ void main()
       bzero(buffer,255);
       fgets(buffer,255,stdin);
       write(sockfd,buffer,strlen(buffer));
+      if(strncasecmp(buffer,"exit",4) ==0)
+      {
+         printf("Client is exiting....\n ");
+         break;
+      }
 
       bzero(buffer,255);
       read(sockfd,buffer,255);
-      printf("Server: %s\n",buffer);
-
-      if(strncasecmp(buffer,"exit",4) ==0)
-         break;
+      printf("Server Message : %s\n",buffer);
    }
    close(sockfd);
 }
+
