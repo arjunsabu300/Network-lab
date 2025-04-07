@@ -1,5 +1,4 @@
-leaky_bucket.c
-3 of 3
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h> // For sleep function
